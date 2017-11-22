@@ -45,6 +45,37 @@ function selectSort(array) {
     return array;
 }
 
+function insertSort(array) {
+    var key;
+    for (let i = 0; i < array.length; i++) {
+        key = array[i];
+        j = i-1;
+        while (j>=0 && array[j]>key) {
+            array[j+1] = array[j];
+            j=j-1;
+        }
+        array[j+1]=key;
+    }
+    return array;
+}
+
+function shellSort(array) {
+    var n = array.length;
+    var temp;
+    for (let gap = n/2; gap > 0; gap = gap/2) {
+       for (let i = gap; i < n; i++) {
+           temp = array[i];
+           var j = i;
+            while(j >= gap && array[j-gap]>temp){
+               array[j] = array[j-gap];               
+               j -= gap;
+            }
+           array[j] = temp;
+       }
+    }
+    return array;
+}
+
 function swap(array,i,j) {
     var aux = array[i];
     array[i] = array[j];
@@ -59,4 +90,7 @@ var arrayZero = [4,9,2,5,7,1,6,3,8,10,0];
 //console.log("QuickSort:")
 //console.log(quickSort(arrayZero));
 
-console.log(selectSort(arrayZero)); 
+//console.log(selectSort(arrayZero)); 
+
+//Shell is not working 
+console.log(insertSort(arrayZero));
